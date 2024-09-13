@@ -10,3 +10,4 @@ Simple Express API + Prisma ORM
 2. Change DATABASE_URL variable on .env to your database url.
 3. Use "npx prisma migrate dev" to create migrations
    based on the database schema (schema.prisma).
+4. Run the app with "npm run dev".
