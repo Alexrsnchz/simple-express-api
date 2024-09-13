@@ -1,5 +1,5 @@
 import User from './../models/user.js';
-import { userSchema, partialUserSchema } from './../schemas/user-schema.js';
+import { userSchema, partialUserSchema } from './../validations/user-schema.js';
 import { z } from 'zod';
 
 class UserController {
@@ -60,7 +60,10 @@ class UserController {
       // Si el error proviene de zod, es decir, de las validaciones,
       // va a enviar un código 400 (bad request) con el mensaje de error.
       if (error instanceof z.ZodError) {
-        return res.status(400).json({ error: error.errors });
+        // Modifica la estructura de los errores de zod
+        // para que muestre los mensajes adecuadamente.
+        const errorMessages = error.errors.map((err) => err.message);
+        return res.status(400).json({ error: errorMessages });
       }
 
       return res.status(500).json({ error: 'Error creating user' });
@@ -97,7 +100,10 @@ class UserController {
       // Si el error proviene de zod, es decir, de las validaciones,
       // va a enviar un código 400 (bad request) con el mensaje de error.
       if (error instanceof z.ZodError) {
-        return res.status(400).json({ error: error.errors });
+        // Modifica la estructura de los errores de zod
+        // para que muestre los mensajes adecuadamente.
+        const errorMessages = error.errors.map((err) => err.message);
+        return res.status(400).json({ error: errorMessages });
       }
 
       return res.status(500).json({ error: 'Error updating user' });
