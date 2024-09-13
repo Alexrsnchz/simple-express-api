@@ -29,7 +29,7 @@ app.use('/users', usersRouter);
 
 // Escucha la conexión en el puerto especificado.
 app.listen(PORT, () => {
-  console.log(`+ Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
 // Explicación de la arquitectura de la app:
