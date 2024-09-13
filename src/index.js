@@ -7,7 +7,7 @@ const app = express();
 // o el que se especifique en un .env.
 //
 // Nota: La variable de entorno se pone en mayúscula.
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT || 3000;
 
 // Desactiva la cabecera powered-by de express,
 // esto te ahorra unos cuantos bytes y soluciona
