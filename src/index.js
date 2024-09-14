@@ -1,5 +1,5 @@
 import express from 'express';
-import { usersRouter } from './routes/users.js';
+import usersRouter from './routes/users.js';
 
 // Crea el servidor de express.
 const app = express();

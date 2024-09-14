@@ -21,4 +21,4 @@ usersRouter.get('/:id', UserController.getUserById);
 usersRouter.patch('/:id', UserController.updateUser);
 usersRouter.delete('/:id', UserController.deleteUser);
 
-export { usersRouter };
+export default usersRouter;
