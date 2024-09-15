@@ -7,7 +7,7 @@
     "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alexrsnchz",
   "license": "ISC",
   "description": "",
   "dependencies": {
