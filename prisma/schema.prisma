@@ -14,8 +14,8 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement()) // Primary Key
-  name      String   @db.VarChar(100)              // Nombre de usuario
-  email     String   @unique @db.VarChar(255)      // Email único
-  password  String   @db.VarChar(255)              // Contraseña (encriptada)
+  id       Int    @id @default(autoincrement()) // Primary Key
+  name     String @db.VarChar(100) // Nombre de usuario
+  email    String @unique @db.VarChar(255) // Email único
+  password String @db.VarChar(255) // Contraseña
 }
