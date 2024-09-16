@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import UserController from '../controllers/user-controller.js';
+import UserController from '../controllers/UserController.js';
 
 // Crea un router para manejar las rutas.
 const usersRouter = Router();

@@ -1,4 +1,4 @@
-import User from './../models/user.js';
+import User from '../models/User.js';
 import { userSchema, partialUserSchema } from './../validations/user-schema.js';
 import { z } from 'zod';
 
