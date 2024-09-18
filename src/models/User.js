@@ -24,22 +24,35 @@ class User {
 
   // Actualiza y devuelve el usuario con la id
   // y los datos introducidos por parámetro.
+  //
+  // Prisma devuelve una excepción en vez de un null
+  // si update falla, por eso, hay que comprobar si
+  // el error que devuelve es el P2025 en cuyo caso
+  // hay que hacer que devuelva null para que salte
+  // el error 404 si no encuentra el registro.
   static async update(id, data) {
-    return prisma.user.update({
-      where: { id },
-      data: data,
-    });
+    try {
+      return await prisma.user.update({
+        where: { id },
+        data: data,
+      });
+    } catch (error) {
+      if (error.code === 'P2025') {
+        return null;
+      }
+
+      throw error;
+    }
   }
 
   // Elimina y devuelve el usuario con la
   // id especificada.
   //
-  // Prisma devuelve un error si delete falla
-  // en vez de un null, por eso, hay que comprobar
-  // si el error que devuelve es el P2025 en cuyo
-  // caso hay que hacer que devuelva null para
-  // para que salte el error 404 como que no
-  // ha encontrado el registro.
+  // Prisma devuelve una excepción en vez de un null
+  // si delete falla, por eso, hay que comprobar si
+  // el error que devuelve es el P2025 en cuyo caso
+  // hay que hacer que devuelva null para que salte
+  // el error 404 si no encuentra el registro.
   static async delete(id) {
     try {
       return await prisma.user.delete({
