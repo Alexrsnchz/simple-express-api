@@ -33,10 +33,25 @@ class User {
 
   // Elimina y devuelve el usuario con la
   // id especificada.
+  //
+  // Prisma devuelve un error si delete falla
+  // en vez de un null, por eso, hay que comprobar
+  // si el error que devuelve es el P2025 en cuyo
+  // caso hay que hacer que devuelva null para
+  // para que salte el error 404 como que no
+  // ha encontrado el registro.
   static async delete(id) {
-    return prisma.user.delete({
-      where: { id },
-    });
+    try {
+      return await prisma.user.delete({
+        where: { id },
+      });
+    } catch (error) {
+      if (error.code === 'P2025') {
+        return null;
+      }
+
+      throw error;
+    }
   }
 }
 
